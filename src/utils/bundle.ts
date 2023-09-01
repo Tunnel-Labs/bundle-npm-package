@@ -15,7 +15,7 @@ export async function bundleNpmPackage(
 				'pkg.cjs': `module.exports = require(${JSON.stringify(pkg)})`
 			}),
 			(esbuild.default ?? esbuild)({
-				minify: options.minify
+				minify: options?.minify
 			}),
 			nodeResolve({ preferBuiltins: true, browser: false }),
 			(commonjs.default ?? commonjs)()
