@@ -1,0 +1,1 @@
+export { bundleNpmPackage } from './utils/bundle.js'
