@@ -1,5 +1,11 @@
 {
-	"name": "bundle-npm-package",
+	"name": "npm-package-bundler",
+	"version": "1.0.0",
+	"type": "module",
+	"exports": "./src/index.ts",
+	"scripts": {
+		"build": "ts-node ./scripts/build.ts"
+	},
 	"dependencies": {
 		"rollup": "^3.28.1",
 		"@rollup/plugin-commonjs": "^25.0.4",

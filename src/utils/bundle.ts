@@ -8,15 +8,17 @@ export async function bundleNpmPackage(pkg: string) {
 	const bundle = await rollup({
 		input: 'pkg',
 		plugins: [
-			virtual({ pkg: `export * from ${JSON.stringify(pkg)}` }),
-			esbuild({
+			(virtual.default ?? virtual)({
+				pkg: `export * from ${JSON.stringify(pkg)}`
+			}),
+			(esbuild.default ?? esbuild)({
 				loaders: {
 					'.ts': 'ts'
 				},
 				minify: true
 			}),
 			nodeResolve({ preferBuiltins: true, browser: false }),
-			commonjs()
+			(commonjs.default ?? commonjs)()
 		]
 	});
 	const { output } = await bundle.generate({ format: 'commonjs' });
